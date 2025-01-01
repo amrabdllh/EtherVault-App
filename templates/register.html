@@ -1,0 +1,149 @@
+<!-- templates/register.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="register-container">
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-5">
+            <div class="text-center mb-4">
+                <i class="bi bi-cloud-plus-fill display-1 text-primary"></i>
+                <h2 class="mt-3 mb-4 fw-bold">Create Account</h2>
+            </div>
+
+            <div class="card register-card">
+                <div class="card-body p-4">
+                    <form method="POST">
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control custom-input" id="username" name="username" placeholder="Username" required>
+                                <label for="username">
+                                    <i class="bi bi-person me-2"></i>Username
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="password" class="form-control custom-input" id="password" name="password" placeholder="Password" required>
+                                <label for="password">
+                                    <i class="bi bi-lock me-2"></i>Password
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control custom-input" id="admin_code" name="admin_code" placeholder="Admin Code">
+                                <label for="admin_code">
+                                    <i class="bi bi-shield-lock me-2"></i>Admin Code (optional)
+                                </label>
+                            </div>
+                            <small class="text-muted mt-1 d-block">
+                                <i class="bi bi-info-circle me-1"></i>Leave empty for regular user account
+                            </small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-3 mb-3">
+                            <i class="bi bi-person-plus me-2"></i>Create Account
+                        </button>
+
+                        <div class="text-center">
+                            <a href="{{ url_for('login') }}" class="text-decoration-none login-link">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Already have an account? Login here
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .register-container {
+<!--        margin: -1.5rem;-->
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .register-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-input {
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .custom-input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.1);
+    }
+
+    .form-floating label {
+        padding-left: 1rem;
+        color: #64748b;
+    }
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label {
+        color: var(--primary-color);
+        opacity: 0.8;
+    }
+
+    .btn-primary {
+        border-radius: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+
+    .login-link {
+        color: #64748b;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .login-link:hover {
+        color: var(--primary-color);
+    }
+
+    /* Add floating animation to the cloud icon */
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+
+    .bi-cloud-plus-fill {
+        animation: float 3s ease-in-out infinite;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .text-muted {
+        font-size: 0.875rem;
+    }
+
+    /* Custom animation for the info text */
+    .text-muted i {
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    .form-floating:focus-within + .text-muted i {
+        opacity: 1;
+    }
+</style>
+{% endblock %}
